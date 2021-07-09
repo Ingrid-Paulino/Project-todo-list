@@ -18,4 +18,20 @@ createInput.id = 'texto-tarefa';
 const createListOrder = document.createElement('ol');
 createMain.appendChild(createListOrder);
 createListOrder.id = 'lista-tarefas';
+//Requisito 5
+const createBtn = document.createElement('button') 
+createMain.appendChild(createBtn).innerText = 'Criar Tarefa';
+createBtn.id = 'criar-tarefa'
 
+const inputText = document.getElementById('texto-tarefa')
+const btnAddText = document.getElementById('criar-tarefa')
+const listText = document.getElementById('lista-tarefas')
+
+function addText() {
+    const text = inputText.value;
+    const listItem = document.createElement('li');
+    listText.appendChild(listItem);
+    listItem.innerText = text;
+    inputText.value = '';
+}
+btnAddText.addEventListener('click', addText)
