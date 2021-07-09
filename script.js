@@ -13,4 +13,9 @@ createParagraph.id = 'funcionamento';
 //Requisito 3
 const createInput = document.createElement('input');
 createMain.appendChild(createInput);
-createInput.id = 'texto-tarefa'
+createInput.id = 'texto-tarefa';
+//Requisito 4
+const createListOrder = document.createElement('ol');
+createMain.appendChild(createListOrder);
+createListOrder.id = 'lista-tarefas';
+
