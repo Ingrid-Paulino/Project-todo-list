@@ -29,13 +29,12 @@ createMain.appendChild(createBtn).innerText = 'Criar Tarefa';
 createBtn.id = 'criar-tarefa';
 const inputText = document.getElementById('texto-tarefa');
 const btnAddText = document.getElementById('criar-tarefa');
-const listText = document.getElementById('lista-tarefas');
 
 function addText() {
   const text = inputText.value;
   const listItem = document.createElement('li');
   listItem.className = 'lista';
-  listText.appendChild(listItem);
+  createListOrder.appendChild(listItem);
   listItem.innerText = text;
   inputText.value = '';
 }
@@ -52,32 +51,37 @@ function colorList(event) {
 }
 listColor.addEventListener('click', colorList);
 
-// Requisito 9 -- n deu certo
+// Requisito 9
 function duploClick(event) {
   event.target.classList.toggle('completed');
 }
 listColor.addEventListener('dblclick', duploClick);
 
-// // Requisito 10
-// const deleteEvery = document.createElement('button');
-// deleteEvery.innerText = 'apagar-tudo';
-// createMain.appendChild(deleteEvery);
-// deleteEvery.id = 'apagar-tudo';
+// Requisito 10
+const deleteEvery = document.createElement('button');
+deleteEvery.innerText = 'apagar-tudo';
+createMain.appendChild(deleteEvery);
+deleteEvery.id = 'apaga-tudo';
+function deleteList() {
+  const deleteLista = document.querySelectorAll('#lista-tarefas>li');
+  for (let i = 0; i < deleteLista.length; i += 1) {
+    deleteLista[i].parentNode.removeChild(deleteLista[i]);
+  }
+}
+deleteEvery.addEventListener('click', deleteList);
 
-// const deleteLli = document.querySelectorAll('li');
-// const deleteLi = document.getElementsByClassName('lli');
-// const btn = document.getElementsByClassName('btn');
-// function deleteList() {
-//   deleteLli.target.classList.remove(deleteLi);
-// }
-// btn.addEventListener('click', deleteList);
+// Requisito 11
+const removeFinalizados = document.createElement('button');
+removeFinalizados.innerText = 'remover-finalizados';
+createMain.appendChild(removeFinalizados);
+removeFinalizados.id = 'remover-finalizados';
 
-// const removeFinalizados = document.createElement('button');
-// removeFinalizados.innerText = 'remover-finalizados';
-// createMain.appendChild(removeFinalizados);
-// // removeFinalizados.className = 'remover-finalizados';
-// // const removeFi = document.querySelector('.remover-finalizados');
-// // function removeFinalizadoss(event) {
-// //   deleteLli.target.classList.remove(deleteLi);
-// // }
-// // removeFi.addEventListener('click', deleteList);
+function deleteFinalizados() {
+  const deleteLista = document.querySelectorAll('#lista-tarefas>li');
+  for (let i = 0; i < deleteLista.length; i += 1) {
+    if (deleteLista[i].classList.contains('completed')) {
+      deleteLista[i].parentNode.removeChild(deleteLista[i]);
+    }
+  }
+}
+removeFinalizados.addEventListener('click', deleteFinalizados);
